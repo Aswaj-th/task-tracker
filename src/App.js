@@ -1,9 +1,21 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import './App.css';
 import TodoItem from './components/TodoItem';
 
+const initTodo = [];
+
+const getInitialItems = () => {
+  const items = localStorage.getItem('todos');
+  return items ? JSON.parse(items) : initTodo;
+}
+
 function App() {
-  const [toDos, setToDos] = useState([]);
+  const [toDos, setToDos] = useState(getInitialItems);
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(toDos));
+  }, [toDos]);
+
   const [toDo, setToDo] = useState('');
   const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   let dateObj = new Date();
