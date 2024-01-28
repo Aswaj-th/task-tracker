@@ -20,7 +20,7 @@ function TodoItem({obj, onChange, delEl, onDragStart, onDragEnter, onDragEnd}) {
             <div className="left">
                 <Button variant='primary' onClick={(e) => {
                     onChange(!obj.status);
-                }}>Done</Button>
+                }}>Mark as {obj.status && "Un"}Done</Button>
             </div>
             <div className="right">
                 <Button variant='primary' onClick={delEl}>Delete</Button>
