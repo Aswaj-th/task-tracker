@@ -2,6 +2,7 @@ import {useState, useEffect, useRef} from 'react';
 import './App.css';
 import TodoItem from './components/TodoItem';
 import Button from 'react-bootstrap/Button';
+import DynamicBackground from './DynamicBackground';
 
 const initTodo = [];
 
@@ -9,6 +10,8 @@ const getInitialItems = () => {
   const items = localStorage.getItem('todos');
   return items ? JSON.parse(items) : initTodo;
 }
+
+
 
 function App() {
   const [toDos, setToDos] = useState(getInitialItems);
@@ -22,6 +25,7 @@ function App() {
   let dateObj = new Date();
   const [day, setDay] = useState(days[dateObj.getDay()]);
   const [sorted, setSorted] = useState(false);
+  //const [hour, setHour] = useState(dateObj.getHours());
 
   const dragItem = useRef(0);
   const draggedOverItem = useRef(0);
@@ -35,6 +39,8 @@ function App() {
   }
 
   return (
+    <>
+    <DynamicBackground />
     <div className="app">
       <div className="mainHeading">
         <h1>Task Tracker</h1>
@@ -44,7 +50,7 @@ function App() {
         <h2>Hey, it's {day}</h2>
       </div>
       <div className="filteroption">
-        <Button onClick={() => setSorted(sorted => !sorted)}>Filter</Button>
+        <Button onClick={() => setSorted(sorted => !sorted)}>{sorted && "Un"}Filter</Button>
       </div>
       <div className="input">
         <input name="inputfield" value={toDo} onChange={(e)=>setToDo(e.target.value)} type="text" placeholder="🖊️ Add item..." />
@@ -81,9 +87,10 @@ function App() {
                       return obj2;
                     }))
                   }} 
-                  draggable onDragStart={() => {dragItem.current = index}} 
+                  onDragStart={() => {dragItem.current = index}} 
                   onDragEnter={() => {draggedOverItem.current = index}} 
                   onDragEnd={handleSort}
+                  draggable={true}
                 />
               )
             })}
@@ -93,7 +100,12 @@ function App() {
         sorted &&
           <div className="todos">
             <div className="todo notDone">
-              <h3>Completed Tasks</h3>
+              {toDos.filter((obj) => {
+                if(!obj.status) {
+                  return obj;
+                }
+                return null;
+              }).length !== 0 && <h3>InComplete Tasks</h3> }
               {toDos.filter((obj) => {
                 if(!obj.status) {
                   return obj;
@@ -118,7 +130,8 @@ function App() {
                         return obj2;
                       }))
                     }} 
-                    draggable onDragStart={() => {dragItem.current = index}} 
+                    draggable={false} 
+                    onDragStart={() => {dragItem.current = index}} 
                     onDragEnter={() => {draggedOverItem.current = index}} 
                     onDragEnd={handleSort}
                   />
@@ -126,7 +139,12 @@ function App() {
               })}
             </div>
             <div className="todo Done">
-              <h3>Completed Tasks</h3>
+              {toDos.filter((obj) => {
+                if(obj.status) {
+                  return obj;
+                }
+                return null;
+              }).length !== 0 && <h3>Completed Tasks</h3> }
               {toDos.filter((obj) => {
                 if(obj.status) {
                   return obj;
@@ -151,7 +169,8 @@ function App() {
                         return obj2;
                       }))
                     }} 
-                    draggable onDragStart={() => {dragItem.current = index}} 
+                    draggable={false} 
+                    onDragStart={() => {dragItem.current = index}} 
                     onDragEnter={() => {draggedOverItem.current = index}} 
                     onDragEnd={handleSort}
                   />
@@ -161,7 +180,9 @@ function App() {
           </div>
       }
     </div>
+    </>
   );
+
 }
 
 export default App;

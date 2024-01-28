@@ -1,0 +1,17 @@
+.morning {
+    background: url('/public/morningBg.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.afterNoon {
+    background: url('/public/afterNoonBg.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.evening {
+    background: url('/public/eveningBg.jpg');
+    background-size: cover;
+    background-position: center;
+}

@@ -9,6 +9,9 @@ body {
 
 .app {
   position: absolute;
+  padding: 10px;
+  border-radius: 5px;
+  background: rgba(200, 200, 200, 0.3);
   top: 10%;
   left: 50%;
   transform: translate(-50%, -10%);
@@ -20,7 +23,7 @@ body {
 
 .app h1,
 h2 {
-  color: white;
+  color: #01005d;
 }
 
 .filteroption {
@@ -68,7 +71,7 @@ h2 {
 }
 
 .Done h3, .notDone h3 {
-  color: white;
+  color:#01005d;
 }
 
 @media screen and (max-width: 450px) {
