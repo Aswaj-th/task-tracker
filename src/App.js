@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useRef} from 'react';
 import './App.css';
 import TodoItem from './components/TodoItem';
 
@@ -20,6 +20,19 @@ function App() {
   const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   let dateObj = new Date();
   const [day, setDay] = useState(days[dateObj.getDay()]);
+
+  const dragItem = useRef(0);
+  const draggedOverItem = useRef(0);
+
+  function handleSort() {
+    console.log("OnDragEnd");
+    const toDosClone = [...toDos];
+    const temp = toDosClone[dragItem.current];
+    toDosClone[dragItem.current] = toDosClone[draggedOverItem.current];
+    toDosClone[draggedOverItem.current] = temp;
+    setToDos(toDosClone);
+  }
+
   return (
     <div className="app">
       <div className="mainHeading">
@@ -40,7 +53,7 @@ function App() {
             setToDo('');}}}></i>
       </div>
       <div className="todos">
-        {toDos.map((obj) => {
+        {toDos.map((obj, index) => {
           return (
             <TodoItem key={obj.id} obj={obj} onChange={(val) => {
               setToDos(toDos.filter(obj2 => {
@@ -54,7 +67,7 @@ function App() {
               if(obj2.id === obj.id) return null;
               return obj2;
               }))
-            }}/>
+            }} draggable onDragStart={() => {dragItem.current = index}} onDragEnter={() => {draggedOverItem.current = index}} onDragEnd={handleSort}/>
           )
         })}
       </div>

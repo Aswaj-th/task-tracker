@@ -2,15 +2,15 @@ import React from 'react';
 import './TodoItem.css';
 import Button from 'react-bootstrap/Button';
 
-function TodoItem({obj, onChange, delEl}) {
+function TodoItem({obj, onChange, delEl, onDragStart, onDragEnter, onDragEnd}) {
     let curClass;
     if(obj.status) curClass = 'top del';
     else curClass = 'top';
-  return (
-    <div className="todo" key={obj.id}>
+    return (
+    <div className="todo" key={obj.id} draggable onDragStart={onDragStart} onDragEnter={onDragEnter} onDragEnd={onDragEnd} onDragOver={(e) => e.preventDefault()}>
         <div className={curClass}>
             <div className="left">
-                <p>{obj.text}</p>
+                <p draggable>{obj.text}</p>
             </div>
             <div className="right">
                 {obj.date}
