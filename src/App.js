@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import './App.css';
+import TodoItem from './components/TodoItem';
 
 function App() {
   const [toDos, setToDos] = useState([]);
@@ -21,10 +22,29 @@ function App() {
         <i className="fas fa-plus" onClick={() => {
           if(toDo !== '') {
             dateObj = new Date();
-            console.log(`${dateObj.getDate()}/${dateObj.getMonth()+1}/${dateObj.getFullYear()}`);
+            //console.log(`${dateObj.getDate()}/${dateObj.getMonth()+1}/${dateObj.getFullYear()}`);
             setDay(days[dateObj.getDay()]);
-            setToDos([...toDos, {id: Date.now(), text: toDo, status: false, date: `${dateObj.getDate()}/${dateObj.getMonth()}/${dateObj.getFullYear()}`}]);
+            setToDos([...toDos, {id: Date.now(), text: toDo, status: false, date: `${dateObj.getDate()}/${dateObj.getMonth()+1}/${dateObj.getFullYear()}`}]);
             setToDo('');}}}></i>
+      </div>
+      <div className="todos">
+        {toDos.map((obj) => {
+          return (
+            <TodoItem key={obj.id} obj={obj} onChange={(val) => {
+              setToDos(toDos.filter(obj2 => {
+              if(obj2.id === obj.id) {
+                  obj2.status=val;
+              }
+              return obj2;
+              }))
+            }} delEl={() => {
+              setToDos(toDos.filter(obj2 => {
+              if(obj2.id === obj.id) return null;
+              return obj2;
+              }))
+            }}/>
+          )
+        })}
       </div>
     </div>
   );

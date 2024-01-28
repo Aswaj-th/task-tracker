@@ -1,0 +1,73 @@
+.todo {
+    margin-top: 0.8em;
+    width: 20em;
+    min-height: 2em;
+    background-color: #838383;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 6px;
+    padding: 5px;
+}
+
+.todo .top {
+    width: 310px;
+    border-radius: 5px;
+    background: white;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+}
+
+.todo .top .left {
+    /* display: flex;
+    justify-content: flex-start;
+    align-items: center; */
+    max-width: 70%;
+    min-height: 0px;
+}
+
+.todo .top .left p {
+    margin-left: 3px;
+    font-size: medium;
+    font-weight: 700;
+    font-style: normal;
+    color: grey;
+}
+
+.todo .bottom {
+    border-radius: 5px;
+    background: white;
+    margin-top: 5px;
+    width: 310px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.todo .bottom .left, .todo .bottom .right {
+    margin: 5px 20px;
+}
+
+.btn {
+    padding: 3px 7px;
+    font-size: 12px;
+}
+
+.del {
+    text-decoration: line-through;
+}
+
+@media screen and (max-width: 450px) {
+
+    .todo {
+        width: 70vw;
+    }
+
+    .todo .top, .todo .bottom {
+        width: 65vw;
+    }
+}
