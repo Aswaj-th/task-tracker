@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './DynamicBackground.css'
 
 const dateObj = new Date();
-const urls = ['morningBg', 'afterNoon', 'evening']
+const urls = ['morning', 'afterNoon', 'evening']
 const DynamicBackground = () => {
   const [time, setTime] = useState(0);
 
