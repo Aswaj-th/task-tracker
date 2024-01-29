@@ -4,6 +4,7 @@
 }
 
 .app {
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -21,12 +22,13 @@
 .new {
   padding: 10px;
   margin: 20px;
-  border-radius: 5px;
+  border-radius: 10px;
   background: rgba(255, 255, 255, 0.3);
   top: 10%;
 }
 
 .new .mainHeading h1 {
+  margin: 10px;
   text-align: center;
 }
 
@@ -58,21 +60,21 @@ h2 {
   padding: 5px;
 }
 
-.app .input input {
+.new .input input {
   width: 100%;
   height: 1.6em;
   border-color: transparent;
   outline-color: transparent;
 }
 
-.app i {
+.new i {
   cursor: pointer;
   font-size: larger;
   font-weight: 900;
   color: grey;
   margin-right: 5px;
 }
-.app .todos {
+.new .todos {
   display: flex;
   justify-content: center;
   /* align-items: center; */
@@ -89,5 +91,14 @@ h2 {
   }
   .app .todos {
     width: 70vw;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .app .input {
+    width: 50vw;
+  }
+  .app .todos {
+    width: 50vw;
   }
 }

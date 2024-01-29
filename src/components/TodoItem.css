@@ -69,5 +69,18 @@
 
     .todo .top, .todo .bottom {
         width: 65vw;
+        width: calc(70vw - 10px);
+    }
+}
+
+@media screen and (min-width: 900px) {
+
+    .todo {
+        width: 50vw;
+    }
+
+    .todo .top, .todo .bottom {
+        width: 49vw;
+        width: calc(50vw - 10px);
     }
 }
