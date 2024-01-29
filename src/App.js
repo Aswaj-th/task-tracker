@@ -54,7 +54,23 @@ function App() {
         <Button onClick={() => setSorted(sorted => !sorted)}>{sorted && "Un"}Filter</Button>
       </div>
       <div className="input">
-        <input name="inputfield" value={toDo} onChange={(e)=>setToDo(e.target.value)} type="text" placeholder="🖊️ Add item..." />
+        <input 
+          name="inputfield" 
+          value={toDo} 
+          onChange={(e)=>setToDo(e.target.value)} 
+          onKeyDown={(e) => {
+            if((e.key === 'Enter') && (toDo !== '')) {
+                dateObj = new Date();
+                //console.log(`${dateObj.getDate()}/${dateObj.getMonth()+1}/${dateObj.getFullYear()}`);
+                setDay(days[dateObj.getDay()]);
+                setToDos([...toDos, {id: Date.now(), text: toDo, status: false, date: `${dateObj.getDate()}/${dateObj.getMonth()+1}/${dateObj.getFullYear()}`}]);
+                setToDo('');
+              }
+            }
+          }
+          type="text" 
+          placeholder="🖊️ Add item..." 
+        />
         <i className="fas fa-plus" 
           onClick={() => {
             if(toDo !== '') {
