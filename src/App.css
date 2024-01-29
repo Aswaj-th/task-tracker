@@ -6,7 +6,6 @@
 .app {
   min-height: 100vh;
   display: flex;
-  align-items: center;
   justify-content: center;
   background: hsla(217, 100%, 50%, 1);
 
@@ -24,7 +23,6 @@
   margin: 20px;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.3);
-  top: 10%;
 }
 
 .new .mainHeading h1 {
@@ -100,5 +98,15 @@ h2 {
   }
   .app .todos {
     width: 50vw;
+  }
+  .filteroption, .subHeading, .todos {
+    padding: 0px 20px;
+  }
+  .app .input {
+    margin: 0px 20px;
+    margin-top: 0.8em; 
+  }
+  .new .input input {
+    width: 90%;
   }
 }
