@@ -27,7 +27,7 @@ const DynamicBackground = () => {
   }, []);
 
   return (
-    <div style={{ height: '100vh', width: '100vw'}} className={urls[time]}>
+    <div style={{ height: '100vh', width: '100vw', position: 'absolute'}} className={urls[time]}>
       {/* Your other content goes here */}
     </div>
   );

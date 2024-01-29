@@ -3,25 +3,34 @@
   padding: 0;
 }
 
-body {
-  background-color: #020631;
-}
-
 .app {
-  position: absolute;
-  padding: 10px;
-  border-radius: 5px;
-  background: rgba(200, 200, 200, 0.3);
-  top: 10%;
-  left: 50%;
-  transform: translate(-50%, -10%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: hsla(217, 100%, 50%, 1);
+
+  background: linear-gradient(90deg, hsla(217, 100%, 50%, 1) 0%, hsla(186, 100%, 69%, 1) 100%);
+
+  background: -moz-linear-gradient(90deg, hsla(217, 100%, 50%, 1) 0%, hsla(186, 100%, 69%, 1) 100%);
+
+  background: -webkit-linear-gradient(90deg, hsla(217, 100%, 50%, 1) 0%, hsla(186, 100%, 69%, 1) 100%);
+
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#0061FF", endColorstr="#60EFFF", GradientType=1 );
 }
 
-.app .mainHeading h1 {
+.new {
+  padding: 10px;
+  margin: 20px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.3);
+  top: 10%;
+}
+
+.new .mainHeading h1 {
   text-align: center;
 }
 
-.app h1,
+.new h1,
 h2 {
   color: #01005d;
 }
@@ -31,13 +40,13 @@ h2 {
   justify-content: flex-end;
 }
 
-.app .input {
+.new .input {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.app .input {
+.new .input {
   margin-top: 0.8em;
   width: 20em;
   height: 2em;

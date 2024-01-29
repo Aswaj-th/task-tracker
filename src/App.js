@@ -2,7 +2,7 @@ import {useState, useEffect, useRef} from 'react';
 import './App.css';
 import TodoItem from './components/TodoItem';
 import Button from 'react-bootstrap/Button';
-import DynamicBackground from './DynamicBackground';
+// import DynamicBackground from './DynamicBackground';
 
 const initTodo = [];
 
@@ -40,8 +40,9 @@ function App() {
 
   return (
     <>
-    <DynamicBackground />
+    {/* <DynamicBackground /> */}
     <div className="app">
+      <div className="new">
       <div className="mainHeading">
         <h1>Task Tracker</h1>
       </div>
@@ -179,6 +180,7 @@ function App() {
             </div>
           </div>
       }
+      </div>
     </div>
     </>
   );
